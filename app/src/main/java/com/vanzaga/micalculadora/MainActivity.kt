@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         // Configuramos la barra de herramientas
         setSupportActionBar(findViewById(R.id.my_toolbar))
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
