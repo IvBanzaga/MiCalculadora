@@ -7,7 +7,6 @@
   <br>
   <br>
 </h1>
-Aplicación, que permita a los usuarios crear listas de tareas y borrarlas
 <br>
 <br>
 
