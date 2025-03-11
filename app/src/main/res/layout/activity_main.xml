@@ -8,22 +8,19 @@
     tools:context=".MainActivity">
 
     <View
+        android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/black"
         tools:ignore="MissingConstraints" />
 
     <!-- Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleCentered="true"
-        tools:ignore="MissingConstraints" />
+        style="@style/Toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -306,8 +303,19 @@
         android:layout_height="0dp"
         android:text="@string/buttonClear"
         app:layout_constraintBottom_toTopOf="@+id/gHor5"
-        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
+        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
+
+    <Button
+        android:id="@+id/btAc"
+        style="@style/NumberButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="AC"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintEnd_toStartOf="@+id/gVer3"
+        app:layout_constraintStart_toEndOf="@+id/gVer2"
         app:layout_constraintTop_toBottomOf="@+id/gHor6" />
 
     <Button
@@ -321,14 +329,74 @@
         app:layout_constraintStart_toEndOf="@+id/gVer4"
         app:layout_constraintTop_toBottomOf="@id/gHor6" />
 
+    <Button
+        android:id="@+id/btDiv"
+        style="@style/SymbolButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="√"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toEndOf="@+id/gVer3"
+        app:layout_constraintTop_toBottomOf="@id/gHor6" />
+
     <View
         android:id="@+id/separator"
         style="@style/Separator"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor1"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor"
         app:layout_constraintEnd_toEndOf="@+id/gVer4"
         app:layout_constraintStart_toStartOf="@+id/gVer4"
         app:layout_constraintTop_toTopOf="@+id/gHor6" />
+
+    <View
+        android:id="@+id/separator2"
+        style="@style/Separator"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor5"
+        app:layout_constraintEnd_toEndOf="@+id/gVer4"
+        app:layout_constraintStart_toStartOf="@+id/gVer2"
+        app:layout_constraintTop_toTopOf="@+id/gHor6" />
+
+    <View
+        android:id="@+id/separator3"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintTop_toTopOf="@+id/gHor5"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor5" />
+
+    <View
+        android:id="@+id/separator4"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintTop_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor4" />
+
+    <View
+        android:id="@+id/separator5"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintTop_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor2" />
+
+    <View
+        android:id="@+id/separator6"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintTop_toTopOf="@+id/gHor3"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor1" />
 
     <TextView
         android:id="@+id/screen"
@@ -343,6 +411,50 @@
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
         app:layout_constraintTop_toBottomOf="@id/gHor7" />
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/email_icon_desc"
+            android:src="@drawable/mail_24px"
+            android:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/footer_text"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/footer_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/github_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/github_icon_desc"
+            android:src="@drawable/github"
+            android:tint="@color/white" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

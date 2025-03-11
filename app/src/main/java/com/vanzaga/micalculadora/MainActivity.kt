@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        operation = null
-
-        // Configurar la barra de herramientas
-        setSupportActionBar(findViewById<Toolbar>(R.id.my_toolbar))
+        /**
+         * Inicializamos los elementos de la interfaz
+         */
+        operation = null // Inicializar las operacines con valor nulo
 
         // Inicializar los botones y pantalla
         val bt0: Button = findViewById(R.id.bt0)

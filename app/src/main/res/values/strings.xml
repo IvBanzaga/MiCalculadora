@@ -10,13 +10,18 @@
     <string name="buttonSeven">7</string>
     <string name="buttonEight">8</string>
     <string name="buttonNine">9</string>
-    <string name="buttonComma">,</string>
+    <string name="buttonComma">.</string>
     <string name="buttonPlus">+</string>
     <string name="buttonMinus">-</string>
     <string name="buttonMult">x</string>
     <string name="buttonDiv">/</string>
-    <string name="buttonClear">CLEAR</string>
+    <string name="buttonClear">DEL</string>
+    <string name="buttonAc">AC</string>
     <string name="buttonEqual">=</string>
+    <string name="buttonRaiz">√</string>
+    <string name="footer_text">2025 @ Todos los derechos reservados &#10; Iván Bazaga</string>
+    <string name="email_icon_desc">Email Icon</string>
+    <string name="github_icon_desc">GitHub Icon</string>
 
 
 

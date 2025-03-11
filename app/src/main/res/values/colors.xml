@@ -18,4 +18,5 @@
     <color name="blue">#0000FF</color>
     <color name="midGray">#BDBDBD</color>
     <color name="darkGray">#767070</color>
+    <color name="buttonCalcular">#205BE6</color>
 </resources>
