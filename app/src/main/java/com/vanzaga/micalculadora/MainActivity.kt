@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.round
 import kotlin.math.sqrt
+import com.vanzaga.micalculadora.logica.Operaciones
 
 /**
  * Clase principal de la aplicación
@@ -15,17 +16,9 @@ import kotlin.math.sqrt
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     /**
-     * Variables de la calculadora
-     * @property firstNumber: Primer número de la operación
-     * @property secondNumber: Segundo número de la operación
-     * @property operation: Operación a realizar
-     * @property screen: Pantalla de la calculadora
+     * Inicializamos la clase Operaciones
      */
-
-    private var firstNumber = 0.0
-    private var secondNumber = 0.0
-    private var operation: String? = null
-    private lateinit var screen: TextView
+    val calcular = Operaciones()
 
     /**
      * Función onCreate
@@ -41,10 +34,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+
         /**
          * Inicializamos los elementos de la interfaz
          */
-        operation = null // Inicializar las operacines con valor nulo
+        calcular.operation = null // Inicializar las operacines con valor nulo
 
         /*
          * Inicializamos los botones
@@ -72,7 +66,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         /**
          * Inicializamos la pantalla
          */
-        screen = findViewById(R.id.screen)
+        calcular.screen = findViewById(R.id.screen)
 
         /**
          * Asignamos el evento click a los botones
@@ -96,129 +90,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      */
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.bt0 -> numeroPresionado("0")
-            R.id.bt1 -> numeroPresionado("1")
-            R.id.bt2 -> numeroPresionado("2")
-            R.id.bt3 -> numeroPresionado("3")
-            R.id.bt4 -> numeroPresionado("4")
-            R.id.bt5 -> numeroPresionado("5")
-            R.id.bt6 -> numeroPresionado("6")
-            R.id.bt7 -> numeroPresionado("7")
-            R.id.bt8 -> numeroPresionado("8")
-            R.id.bt9 -> numeroPresionado("9")
-            R.id.btComma -> numeroPresionado(".")
-            R.id.btplus, R.id.btMinus, R.id.btMul, R.id.btDiv -> operaciones(view.id)
-            R.id.btClear -> limpiarPantalla()
-            R.id.btEqual -> calcularResultado()
-            R.id.btAc -> deleteUlitmoDigito()
-            R.id.btRaiz -> calcularRaiz()
+            R.id.bt0 -> calcular.numeroPresionado("0")
+            R.id.bt1 -> calcular.numeroPresionado("1")
+            R.id.bt2 -> calcular.numeroPresionado("2")
+            R.id.bt3 -> calcular.numeroPresionado("3")
+            R.id.bt4 -> calcular.numeroPresionado("4")
+            R.id.bt5 -> calcular.numeroPresionado("5")
+            R.id.bt6 -> calcular.numeroPresionado("6")
+            R.id.bt7 -> calcular.numeroPresionado("7")
+            R.id.bt8 -> calcular.numeroPresionado("8")
+            R.id.bt9 -> calcular.numeroPresionado("9")
+            R.id.btComma -> calcular.numeroPresionado(".")
+            R.id.btplus, R.id.btMinus, R.id.btMul, R.id.btDiv -> calcular.operaciones(view.id)
+            R.id.btClear -> calcular.limpiarPantalla()
+            R.id.btEqual -> calcular.calcularResultado()
+            R.id.btAc -> calcular.deleteUlitmoDigito()
+            R.id.btRaiz -> calcular.calcularRaiz()
         }
     }
 
-    /**
-     * Funcion para manejar los numeros
-     * @param number: Número presionado
-     * Si el número es 0 y no es una coma, mostramos el número
-     * Si no, concatenamos el número
-     * @see https://kotlinlang.org/docs/basic-syntax.html#string-templates
-     */
-    private fun numeroPresionado(number: String) {
-        screen.text = if (screen.text == "0" && number != ",") { // Si el número es 0 y no es una coma
-            number
-        } else {
-            "${screen.text}$number" // Concatenar el número
-        }
-    }
-
-    /**
-     * Función para manejar las operaciones
-     * @param opId: Identificador de la operación
-     * Utilizamos when para asignar la operación correspondiente, es como un switch en Java
-     * @see https://kotlinlang.org/docs/control-flow.html#when-expression
-     */
-    private fun operaciones(opId: Int) {
-        firstNumber = screen.text.toString().toDouble()
-        operation = when (opId) {
-            R.id.btplus -> "+"
-            R.id.btMinus -> "-"
-            R.id.btMul -> "*"
-            R.id.btDiv -> "/"
-            R.id.btRaiz -> "√"
-            else -> null
-        }
-        if (operation != "√") {
-            screen.text = "0"
-        }
-    }
-
-    /**
-     * Función para calcular el resultado de operaciones básicas
-     * Utilizamos when para asignar la operación correspondiente, es como un switch en Java
-     * @see https://kotlinlang.org/docs/control-flow.html#when-expression
-     */
-    private fun calcularResultado() {
-        secondNumber = screen.text.toString().toDouble()
-        val result = when (operation) {
-            "+" -> firstNumber + secondNumber
-            "-" -> firstNumber - secondNumber
-            "*" -> firstNumber * secondNumber
-            "/" -> if (secondNumber != 0.0) firstNumber / secondNumber else Double.NaN
-            else -> 0.0
-        }
-        // Redondear a dos decimales
-        val roundedResult = round(result * 100) / 100
-
-        // Mostrar sin decimales si es entero
-        screen.text = if (roundedResult % 1 == 0.0) {
-            roundedResult.toInt().toString()
-        } else {
-            roundedResult.toString()
-        }
-    }
-
-    /**
-     * Función para calcular la raíz cuadrada
-     * Utilizamos la función sqrt de la clase Math
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/sqrt.html
-     */
-    private fun calcularRaiz() {
-        firstNumber = screen.text.toString().toDouble()
-
-        // Validamos que el número no sea negativo
-        val result = if (firstNumber >= 0) Math.sqrt(firstNumber) else Double.NaN
-
-        // Redondear a dos decimales
-        val roundedResult = round(result * 100) / 100
-
-        // Mostrar sin decimales si es entero
-        screen.text = if (roundedResult % 1 == 0.0) {
-            roundedResult.toInt().toString()
-        } else {
-            roundedResult.toString()
-        }
-    }
-
-    /**
-     * Función para limpiar la pantalla con la tecla DEL
-     * Limpiamos la pantalla, los números y la operación
-     */
-    private fun limpiarPantalla() {
-        screen.text = "0"
-        firstNumber = 0.0
-        secondNumber = 0.0
-        operation = null
-    }
-
-    /**
-     * Función para eliminar el último dígito con la tecla AC
-     * Si la pantalla tiene más de un dígito, eliminamos el último
-     * Si no, mostramos 0
-     */
-    private fun deleteUlitmoDigito() {
-        screen.text = if (screen.text.length > 1) {
-            screen.text.dropLast(1)
-        } else {
-            "0"
-        }
-    }
 }
