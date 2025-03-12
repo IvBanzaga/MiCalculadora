@@ -1,24 +1,21 @@
-package com.vanzaga.micalculadora.logica
+package com.vanzaga.micalculadora.services
 
 import android.widget.TextView
 import com.vanzaga.micalculadora.R
 import kotlin.math.round
 
-open class Operaciones {
+open class Calculator(protected val screen: TextView) {
 
     /**
      * Variables de la calculadora
      * @property firstNumber: Primer número de la operación
      * @property secondNumber: Segundo número de la operación
      * @property operation: Operación a realizar
-     * @property screen: Pantalla de la calculadora
      */
 
     var firstNumber = 0.0
     var secondNumber = 0.0
     var operation: String? = null
-    lateinit var screen: TextView
-
 
     /**
      * Función para manejar las operaciones
@@ -26,6 +23,7 @@ open class Operaciones {
      * Utilizamos when para asignar la operación correspondiente, es como un switch en Java
      * @see https://kotlinlang.org/docs/control-flow.html#when-expression
      */
+
     open fun operaciones(opId: Int) {
         firstNumber = screen.text.toString().toDouble()
         operation = when (opId) {
@@ -46,6 +44,7 @@ open class Operaciones {
      * Utilizamos when para asignar la operación correspondiente, es como un switch en Java
      * @see https://kotlinlang.org/docs/control-flow.html#when-expression
      */
+
     open fun calcularResultado() {
         secondNumber = screen.text.toString().toDouble()
         val result = when (operation) {
@@ -71,6 +70,7 @@ open class Operaciones {
      * Utilizamos la función sqrt de la clase Math
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/sqrt.html
      */
+
     open fun calcularRaiz() {
         firstNumber = screen.text.toString().toDouble()
 
@@ -95,36 +95,12 @@ open class Operaciones {
      * Si no, concatenamos el número
      * @see https://kotlinlang.org/docs/basic-syntax.html#string-templates
      */
+
     open fun numeroPresionado(number: String) {
         screen.text = if (screen.text == "0" && number != ",") { // Si el número es 0 y no es una coma
             number
         } else {
             "${screen.text}$number" // Concatenar el número
-        }
-    }
-
-
-    /**
-     * Función para limpiar la pantalla con la tecla DEL
-     * Limpiamos la pantalla, los números y la operación
-     */
-    open fun limpiarPantalla() {
-        screen.text = "0"
-        firstNumber = 0.0
-        secondNumber = 0.0
-        operation = null
-    }
-
-    /**
-     * Función para eliminar el último dígito con la tecla AC
-     * Si la pantalla tiene más de un dígito, eliminamos el último
-     * Si no, mostramos 0
-     */
-    open fun deleteUlitmoDigito() {
-        screen.text = if (screen.text.length > 1) {
-            screen.text.dropLast(1)
-        } else {
-            "0"
         }
     }
 }

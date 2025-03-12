@@ -6,9 +6,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.math.round
-import kotlin.math.sqrt
-import com.vanzaga.micalculadora.logica.Operaciones
+import com.vanzaga.micalculadora.services.Clean
+import com.vanzaga.micalculadora.services.Calculator
 
 /**
  * Clase principal de la aplicación
@@ -16,9 +15,18 @@ import com.vanzaga.micalculadora.logica.Operaciones
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     /**
-     * Inicializamos la clase Operaciones
+     * Inicializamos la clase Calculator y Clean
+     * @property calcular: Clase para realizar operaciones
+     * @property limpiar: Clase para limpiar la pantalla
+     * Utilizamos lateinit para inicializar las variables más adelante
+     * @see https://kotlinlang.org/docs/properties.html#late-initialized-properties
+     * @see https://kotlinlang.org/docs/classes.html
+     * Las declaramos como private para que solo sean accesibles desde esta clase
+     * @see https://kotlinlang.org/docs/visibility-modifiers.html
      */
-    val calcular = Operaciones()
+
+    private lateinit var calcular: Calculator
+    private lateinit var limpiar: Clean
 
     /**
      * Función onCreate
@@ -34,15 +42,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        /**
+         * Inicializamos la pantalla
+         * @see https://developer.android.com/reference/android/widget/TextView
+         * Utilizamos findViewById para obtener la vista de la pantalla
+         */
+
+        val screen: TextView = findViewById(R.id.screen)
 
         /**
-         * Inicializamos los elementos de la interfaz
+         * Inicializamos las clases
+         * @see https://kotlinlang.org/docs/classes.html
+         * @see https://kotlinlang.org/docs/properties.html
          */
-        calcular.operation = null // Inicializar las operacines con valor nulo
+
+        calcular = Calculator(screen)
+        limpiar = Clean(screen)
 
         /*
          * Inicializamos los botones
+         * @see https://developer.android.com/reference/android/widget/Button
+         * @see https://developer.android.com/reference/android/widget/TextView
+         * @see https://developer.android.com/reference/android/widget/EditText
          */
+
         val bt0: Button = findViewById(R.id.bt0)
         val bt1: Button = findViewById(R.id.bt1)
         val bt2: Button = findViewById(R.id.bt2)
@@ -64,21 +87,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btRaiz: Button = findViewById(R.id.btRaiz)
 
         /**
-         * Inicializamos la pantalla
-         */
-        calcular.screen = findViewById(R.id.screen)
-
-        /**
          * Asignamos el evento click a los botones
-         * Utilizamos un forEach para asignar el evento a todos los botones
+         * Utilizamos arrayOf y forEach para asignar el evento click a todos los botones
          * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html
          * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/array-of.html
          */
+
         arrayOf(
             bt0, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, btComma,
             btPlus, btMinus, btMul, btDiv, btClear, btEqual, btAc, btRaiz
         ).forEach { it.setOnClickListener(this) }
-
     }
 
     /**
@@ -88,6 +106,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * @see https://kotlinlang.org/docs/control-flow.html#when-expression
      * Reescribimos la función onClick de la interfaz View.OnClickListener y manejamos los eventos de los botones
      */
+
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.bt0 -> calcular.numeroPresionado("0")
@@ -102,11 +121,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.bt9 -> calcular.numeroPresionado("9")
             R.id.btComma -> calcular.numeroPresionado(".")
             R.id.btplus, R.id.btMinus, R.id.btMul, R.id.btDiv -> calcular.operaciones(view.id)
-            R.id.btClear -> calcular.limpiarPantalla()
+            R.id.btClear -> limpiar.limpiarPantalla()
             R.id.btEqual -> calcular.calcularResultado()
-            R.id.btAc -> calcular.deleteUlitmoDigito()
+            R.id.btAc -> limpiar.deleteUlitmoDigito()
             R.id.btRaiz -> calcular.calcularRaiz()
         }
     }
-
 }
