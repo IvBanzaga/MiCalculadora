@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- View para el fondo -->
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
@@ -23,17 +24,9 @@
         app:title="@string/app_name" />
 
 
+    <!-- Lineas guia -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gHor1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="1"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gHor2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -42,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gHor3"
+        android:id="@+id/gHor2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -51,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gHor4"
+        android:id="@+id/gHor3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -60,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gHor5"
+        android:id="@+id/gHor4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -69,12 +62,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gHor6"
+        android:id="@+id/gHor5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -131,6 +133,7 @@
         app:layout_constraintGuide_percent="1"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Botones Númericos Calculadora -->
     <Button
         android:id="@+id/bt0"
         style="@style/NumberButton"
@@ -285,6 +288,7 @@
         app:layout_constraintStart_toEndOf="@+id/gVer3"
         app:layout_constraintTop_toBottomOf="@+id/gHor5" />
 
+   <!-- Botones de operaciones -->
     <Button
         android:id="@+id/btMul"
         style="@style/SymbolButton"
@@ -340,6 +344,7 @@
         app:layout_constraintStart_toEndOf="@+id/gVer3"
         app:layout_constraintTop_toBottomOf="@id/gHor6" />
 
+    <!-- Separadores bordes para delimitar botones para la lógica -->
     <View
         android:id="@+id/separator"
         style="@style/Separator"
@@ -398,6 +403,7 @@
         app:layout_constraintTop_toTopOf="@+id/gHor3"
         app:layout_constraintBottom_toBottomOf="@+id/gHor1" />
 
+    <!-- Pantalla de la calculadora -->
     <TextView
         android:id="@+id/screen"
         style="@style/ScreenNumber"
@@ -409,23 +415,24 @@
         android:text="@string/buttonCero"
         app:layout_constraintBottom_toTopOf="@+id/gHor6"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@id/gHor7" />
+        app:layout_constraintTop_toBottomOf="@id/gHor7"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <!-- Footer -->
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="#2196F3"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/screen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@+id/gHor1">
 
         <ImageView
             android:id="@+id/email_icon"
@@ -455,6 +462,4 @@
             android:src="@drawable/github"
             android:tint="@color/white" />
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
