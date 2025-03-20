@@ -22,7 +22,9 @@
     <string name="footer_text">2025 @ Todos los derechos reservados &#10; Iván Bazaga</string>
     <string name="email_icon_desc">Email Icon</string>
     <string name="github_icon_desc">GitHub Icon</string>
-
-
-
+    <string name="MR">MR</string>
+    <string name="MC">MC</string>
+    <string name="MPlus">M+</string>
+    <string name="MMinus">M-</string>
+    <string name="MS">MS</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.vanzaga.micalculadora
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -8,6 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.vanzaga.micalculadora.services.Clean
 import com.vanzaga.micalculadora.services.Calculator
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * Clase principal de la aplicación
@@ -27,6 +32,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var calcular: Calculator
     private lateinit var limpiar: Clean
+    private lateinit var txtViewTime: TextView
+    private val handler = Handler(Looper.getMainLooper())
+    private val runnable = object : Runnable {
+        override fun run() {
+            val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
+            txtViewTime.text = currentTime
+            handler.postDelayed(this, 1000)
+        }
+    }
 
     /**
      * Función onCreate
@@ -85,6 +99,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val btEqual: Button = findViewById(R.id.btEqual)
         val btAc: Button = findViewById(R.id.btAc)
         val btRaiz: Button = findViewById(R.id.btRaiz)
+        val btMc: Button = findViewById(R.id.btMc)
+        val btMr: Button = findViewById(R.id.btMr)
+        val btPlusNew: Button = findViewById(R.id.btPlusNew)
+        val btMinusNew: Button = findViewById(R.id.btMinusNew)
+        val btMemory: Button = findViewById(R.id.btMs)
+
+        /**
+         * Mostrar Hora del sistema
+         */
+        txtViewTime = findViewById(R.id.TxtViewTime)
+        handler.post(runnable)
 
         /**
          * Asignamos el evento click a los botones
@@ -95,7 +120,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         arrayOf(
             bt0, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, btComma,
-            btPlus, btMinus, btMul, btDiv, btClear, btEqual, btAc, btRaiz
+            btPlus, btMinus, btMul, btDiv, btClear, btEqual, btAc, btRaiz,
+            btMc, btMr, btPlusNew, btMinusNew, btMemory
         ).forEach { it.setOnClickListener(this) }
     }
 
@@ -125,6 +151,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btEqual -> calcular.calcularResultado()
             R.id.btAc -> limpiar.deleteUlitmoDigito()
             R.id.btRaiz -> calcular.calcularRaiz()
+            R.id.btMc -> calcular.memoryClear()
+            R.id.btMr -> calcular.memoryRecall()
+            R.id.btPlusNew -> calcular.memoryAdd()
+            R.id.btMinusNew -> calcular.memorySubtract()
+            R.id.btMs -> calcular.memorySave()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacks(runnable)
     }
 }

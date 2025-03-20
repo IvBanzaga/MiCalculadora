@@ -16,6 +16,7 @@ open class Calculator(protected val screen: TextView) {
     var firstNumber = 0.0
     var secondNumber = 0.0
     var operation: String? = null
+    var memory = 0.0
 
     /**
      * Función para manejar las operaciones
@@ -25,7 +26,12 @@ open class Calculator(protected val screen: TextView) {
      */
 
     open fun operaciones(opId: Int) {
-        firstNumber = screen.text.toString().toDouble()
+        try {
+            firstNumber = screen.text.toString().toDouble()
+        } catch (e: NumberFormatException) {
+            screen.text = "Error"
+            return
+        }
         operation = when (opId) {
             R.id.btplus -> "+"
             R.id.btMinus -> "-"
@@ -37,6 +43,12 @@ open class Calculator(protected val screen: TextView) {
         if (operation != "√") {
             screen.text = "0"
         }
+        // Mostrar la operación en curso
+        screen.text = if (firstNumber % 1 == 0.0) {
+            "${firstNumber.toInt()}${operation}"
+        } else {
+            "${firstNumber}${operation}"
+        }
     }
 
     /**
@@ -46,24 +58,50 @@ open class Calculator(protected val screen: TextView) {
      */
 
     open fun calcularResultado() {
-        secondNumber = screen.text.toString().toDouble()
-        val result = when (operation) {
-            "+" -> firstNumber + secondNumber
-            "-" -> firstNumber - secondNumber
-            "*" -> firstNumber * secondNumber
-            "/" -> if (secondNumber != 0.0) firstNumber / secondNumber else Double.NaN
-            else -> 0.0
-        }
-        // Redondear a dos decimales
-        val roundedResult = round(result * 100) / 100
+        val currentText = screen.text.toString()
+        val numberPattern = Regex("[-+]?\\d*\\.?\\d+")
+        val operatorPattern = Regex("[+\\-*/]")
 
-        // Mostrar sin decimales si es entero
-        screen.text = if (roundedResult % 1 == 0.0) {
-            roundedResult.toInt().toString()
-        } else {
-            roundedResult.toString()
+        // Extraer todos los números y operadores de la pantalla
+        val numbers = numberPattern.findAll(currentText).map { it.value.toDouble() }.toList()
+        val operators = operatorPattern.findAll(currentText).map { it.value }.toList()
+
+        if (numbers.size < 2 || operators.isEmpty()) {
+            screen.text = "Error"
+            return
+        }
+
+        try {
+            var result = numbers[0]
+            for (i in operators.indices) {
+                val nextNumber = numbers[i + 1]
+                result = when (operators[i]) {
+                    "+" -> result + nextNumber
+                    "-" -> result - nextNumber
+                    "*" -> result * nextNumber
+                    "/" -> if (nextNumber != 0.0) result / nextNumber else Double.NaN
+                    else -> 0.0
+                }
+            }
+
+            val roundedResult = round(result * 100) / 100
+            val resultText = if (roundedResult % 1 == 0.0) {
+                roundedResult.toInt().toString()
+            } else {
+                roundedResult.toString()
+            }
+
+            // Mostrar el resultado
+            screen.text = resultText
+            // Actualizar el primer número para permitir operaciones consecutivas
+            firstNumber = roundedResult
+            secondNumber = 0.0
+            operation = null
+        } catch (e: NumberFormatException) {
+            screen.text = "Error"
         }
     }
+
 
     /**
      * Función para calcular la raíz cuadrada
@@ -97,10 +135,63 @@ open class Calculator(protected val screen: TextView) {
      */
 
     open fun numeroPresionado(number: String) {
-        screen.text = if (screen.text == "0" && number != ",") { // Si el número es 0 y no es una coma
-            number
+        screen.text =
+            if (screen.text == "0" && number != ",") { // Si el número es 0 y no es una coma
+                number
+            } else {
+                "${screen.text}$number" // Concatenar el número
+            }
+    }
+
+    /**
+     * Funciones de memoria
+     */
+    open fun memoryClear() { // Limpiar memoria
+        memory = 0.0
+    }
+
+    open fun memoryRecall() { // Mostrar memoria
+        screen.text = if (memory % 1 == 0.0) {
+            memory.toInt().toString()
         } else {
-            "${screen.text}$number" // Concatenar el número
+            memory.toString()
+        }
+    }
+
+    open fun memoryAdd() { // Sumar a memoria
+        val currentNumber = screen.text.toString().toDoubleOrNull()
+        if (currentNumber != null) {
+            val result = currentNumber + memory
+            screen.text = if (result % 1 == 0.0) {
+                result.toInt().toString()
+            } else {
+                result.toString()
+            }
+        } else {
+            screen.text = "Error"
+        }
+    }
+
+    open fun memorySubtract() { // Restar a memoria
+        val currentNumber = screen.text.toString().toDoubleOrNull()
+        if (currentNumber != null) {
+            val result = currentNumber - memory
+            screen.text = if (result % 1 == 0.0) {
+                result.toInt().toString()
+            } else {
+                result.toString()
+            }
+        } else {
+            screen.text = "Error"
+        }
+    }
+
+    open fun memorySave() { // Almacenar en memoria y limpiar pantalla
+        try {
+            memory = screen.text.toString().toDouble()
+            screen.text = "0"
+        } catch (e: NumberFormatException) {
+            screen.text = "Error"
         }
     }
 }

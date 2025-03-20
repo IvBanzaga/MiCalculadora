@@ -12,16 +12,16 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="#2196F3"
         tools:ignore="MissingConstraints" />
 
-    <!-- Toolbar -->
+    <!-- Toolbar
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         style="@style/Toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/app_name" />
+        app:title="@string/app_name" />-->
 
 
     <!-- Lineas guia -->
@@ -89,12 +89,30 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gVer1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0"
+        app:layout_constraintGuide_percent="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -140,10 +158,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonCero"
-        app:layout_constraintBottom_toTopOf="@+id/gHor1"
-        app:layout_constraintEnd_toStartOf="@+id/gVer3"
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor2" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
 
     <Button
         android:id="@+id/btComma"
@@ -151,10 +169,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonComma"
-        app:layout_constraintBottom_toTopOf="@+id/gHor1"
-        app:layout_constraintEnd_toStartOf="@+id/gVer4"
-        app:layout_constraintStart_toEndOf="@+id/gVer3"
-        app:layout_constraintTop_toBottomOf="@+id/gHor2" />
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintEnd_toStartOf="@+id/gVer3"
+        app:layout_constraintStart_toEndOf="@+id/gVer2"
+        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
 
     <Button
         android:id="@+id/btEqual"
@@ -162,10 +180,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonEqual"
-        app:layout_constraintBottom_toTopOf="@+id/gHor1"
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer4"
-        app:layout_constraintTop_toBottomOf="@+id/gHor2" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
 
     <Button
         android:id="@+id/btplus"
@@ -173,10 +191,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonPlus"
-        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer4"
-        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
 
     <Button
         android:id="@+id/bt1"
@@ -184,10 +202,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonOne"
-        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
 
     <Button
         android:id="@+id/bt2"
@@ -195,10 +213,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonTwo"
-        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer3"
         app:layout_constraintStart_toEndOf="@+id/gVer2"
-        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
 
     <Button
         android:id="@+id/bt3"
@@ -206,10 +224,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonThree"
-        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toEndOf="@+id/gVer3"
-        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
 
     <Button
         android:id="@+id/bt4"
@@ -217,10 +235,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonFour"
-        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
 
     <Button
         android:id="@+id/bt5"
@@ -228,10 +246,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonFive"
-        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer3"
         app:layout_constraintStart_toEndOf="@+id/gVer2"
-        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
 
     <Button
         android:id="@+id/bt6"
@@ -239,10 +257,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonSix"
-        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toEndOf="@+id/gVer3"
-        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
 
     <Button
         android:id="@+id/btMinus"
@@ -250,10 +268,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonMinus"
-        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer4"
-        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
 
     <Button
         android:id="@+id/bt7"
@@ -261,10 +279,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonSeven"
-        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toTopOf="@+id/gHor6"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor7" />
 
     <Button
         android:id="@+id/bt8"
@@ -272,10 +290,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonEight"
-        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toTopOf="@+id/gHor6"
         app:layout_constraintEnd_toStartOf="@+id/gVer3"
         app:layout_constraintStart_toEndOf="@+id/gVer2"
-        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor7" />
 
     <Button
         android:id="@+id/bt9"
@@ -283,44 +301,46 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonNine"
-        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toTopOf="@+id/gHor6"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toEndOf="@+id/gVer3"
-        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor7" />
 
-   <!-- Botones de operaciones -->
+    <!-- Botones de operaciones -->
     <Button
         android:id="@+id/btMul"
         style="@style/SymbolButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonMult"
-        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintBottom_toTopOf="@+id/gHor6"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer4"
-        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor7" />
 
     <Button
         android:id="@+id/btClear"
         style="@style/NumberButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#4CAF50"
         android:text="@string/buttonClear"
-        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintBottom_toTopOf="@+id/gHor7"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor8" />
 
     <Button
         android:id="@+id/btAc"
         style="@style/NumberButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#4CAF50"
         android:text="AC"
-        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintBottom_toTopOf="@+id/gHor7"
         app:layout_constraintEnd_toStartOf="@+id/gVer3"
         app:layout_constraintStart_toEndOf="@+id/gVer2"
-        app:layout_constraintTop_toBottomOf="@+id/gHor6" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor8" />
 
     <Button
         android:id="@+id/btDiv"
@@ -328,10 +348,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/buttonDiv"
-        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintBottom_toTopOf="@+id/gHor7"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintStart_toEndOf="@+id/gVer4"
-        app:layout_constraintTop_toBottomOf="@id/gHor6" />
+        app:layout_constraintTop_toBottomOf="@id/gHor8" />
 
     <Button
         android:id="@+id/btRaiz"
@@ -339,69 +359,176 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="√"
-        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintBottom_toTopOf="@+id/gHor7"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toEndOf="@+id/gVer3"
-        app:layout_constraintTop_toBottomOf="@id/gHor6" />
+        app:layout_constraintTop_toBottomOf="@id/gHor8" />
+
+    <Button
+        android:id="@+id/btMinusNew"
+        style="@style/SymbolButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        android:text="@string/MMinus"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintEnd_toStartOf="@+id/gVer5"
+        app:layout_constraintStart_toEndOf="@+id/gVer4"
+        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+
+    <Button
+        android:id="@+id/btMs"
+        style="@style/NumberButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        android:text="@string/MS"
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toEndOf="@+id/gVer3"
+        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+
+    <Button
+        android:id="@+id/btPlusNew"
+        style="@style/NumberButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        android:text="@string/MPlus"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toEndOf="@+id/gVer3"
+        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+
+    <Button
+        android:id="@+id/btMc"
+        style="@style/NumberButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        android:text="@string/MC"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintEnd_toStartOf="@+id/gVer3"
+        app:layout_constraintStart_toEndOf="@+id/gVer2"
+        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
+
+    <Button
+        android:id="@+id/btMr"
+        style="@style/NumberButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        android:text="@string/MR"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toEndOf="@+id/gVer1"
+        app:layout_constraintTop_toBottomOf="@+id/gHor3" />
 
     <!-- Separadores bordes para delimitar botones para la lógica -->
     <View
         android:id="@+id/separator"
         style="@style/Separator"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor2"
         app:layout_constraintEnd_toEndOf="@+id/gVer4"
         app:layout_constraintStart_toStartOf="@+id/gVer4"
-        app:layout_constraintTop_toTopOf="@+id/gHor6" />
+        app:layout_constraintTop_toTopOf="@+id/gHor8" />
 
     <View
         android:id="@+id/separator2"
         style="@style/Separator"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor5"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor7"
         app:layout_constraintEnd_toEndOf="@+id/gVer4"
         app:layout_constraintStart_toStartOf="@+id/gVer2"
-        app:layout_constraintTop_toTopOf="@+id/gHor6" />
+        app:layout_constraintTop_toTopOf="@+id/gHor8" />
 
     <View
         android:id="@+id/separator3"
         style="@style/Separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor5"
         app:layout_constraintEnd_toEndOf="@+id/gVer5"
-        app:layout_constraintTop_toTopOf="@+id/gHor5"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor5" />
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor9" />
 
     <View
         android:id="@+id/separator4"
         style="@style/Separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor4"
         app:layout_constraintEnd_toEndOf="@+id/gVer5"
-        app:layout_constraintTop_toTopOf="@+id/gHor4"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor4" />
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintTop_toTopOf="@+id/gHor4" />
 
     <View
         android:id="@+id/separator5"
         style="@style/Separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor2"
         app:layout_constraintEnd_toEndOf="@+id/gVer5"
-        app:layout_constraintTop_toTopOf="@+id/gHor4"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor2" />
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor4" />
 
     <View
         android:id="@+id/separator6"
         style="@style/Separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor1"
         app:layout_constraintEnd_toEndOf="@+id/gVer5"
-        app:layout_constraintTop_toTopOf="@+id/gHor3"
-        app:layout_constraintBottom_toBottomOf="@+id/gHor1" />
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor3" />
+
+    <View
+        android:id="@+id/separator7"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor4"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintTop_toTopOf="@+id/gHor6" />
+
+    <View
+        android:id="@+id/separator8"
+        style="@style/Separator"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor4"
+        app:layout_constraintEnd_toEndOf="@+id/gVer5"
+        app:layout_constraintStart_toStartOf="@+id/gVer4"
+        app:layout_constraintTop_toTopOf="@+id/gHor8" />
+
+    <View
+        android:id="@+id/separator9"
+        style="@style/Separator"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor7"
+        app:layout_constraintEnd_toEndOf="@+id/gVer0"
+        app:layout_constraintStart_toStartOf="@+id/gVer2"
+        app:layout_constraintTop_toTopOf="@+id/gHor8" />
+
+    <View
+        android:id="@+id/separator10"
+        style="@style/Separator"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor2"
+        app:layout_constraintEnd_toEndOf="@+id/gVer0"
+        app:layout_constraintStart_toStartOf="@+id/gVer2"
+        app:layout_constraintTop_toTopOf="@+id/gHor3" />
+
+    <View
+        android:id="@+id/separator11"
+        style="@style/Separator"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor2"
+        app:layout_constraintEnd_toEndOf="@+id/gVer0"
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintTop_toTopOf="@+id/gHor4" />
 
     <!-- Pantalla de la calculadora -->
     <TextView
@@ -413,25 +540,43 @@
         android:layout_marginEnd="16dp"
         android:gravity="center | end"
         android:text="@string/buttonCero"
-        app:layout_constraintBottom_toTopOf="@+id/gHor6"
+        app:layout_constraintBottom_toTopOf="@+id/gHor8"
         app:layout_constraintEnd_toStartOf="@+id/gVer5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@id/gHor7"
+        app:layout_constraintTop_toBottomOf="@id/gHor9"
         app:layout_constraintVertical_bias="0.0" />
 
+    <!-- Hora del sistema -->
+
     <!-- Footer -->
+
+    <TextView
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:textSize="34sp"
+        android:gravity="center"
+        android:id="@+id/TxtViewTime"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#353232"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor1"
+        app:layout_constraintEnd_toStartOf="@+id/gVer1"
+        app:layout_constraintStart_toStartOf="@+id/gHor0"
+        app:layout_constraintTop_toTopOf="@+id/gHor2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:background="#2196F3"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/gVer5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/gHor0"
+        app:layout_constraintEnd_toStartOf="@+id/gVer7"
+        app:layout_constraintStart_toStartOf="@+id/gHor0"
         app:layout_constraintTop_toTopOf="@+id/gHor1">
 
         <ImageView
@@ -462,4 +607,6 @@
             android:src="@drawable/github"
             android:tint="@color/white" />
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
