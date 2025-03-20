@@ -12,7 +12,7 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
+        android:background="#353232"
         tools:ignore="MissingConstraints" />
 
     <!-- Toolbar
