@@ -2,6 +2,12 @@ package com.vanzaga.micalculadora.services
 
 import android.widget.TextView
 
+/**
+ * Clase Clean
+ * Clase que hereda de Calculator
+ * Clase que se encarga de limpiar la pantalla
+ * @param screen Pantalla de la calculadora
+ */
 open class Clean(screen: TextView) : Calculator(screen) {
 
     /**
@@ -10,10 +16,10 @@ open class Clean(screen: TextView) : Calculator(screen) {
      */
 
     fun limpiarPantalla() {
-        screen.text = "0"
-        firstNumber = 0.0
-        secondNumber = 0.0
-        operation = null
+        screen.text = "0" // Mostramos 0 en la pantalla
+        firstNum = 0.0 // Reiniciamos el primer número
+        secondNum = 0.0 // Reiniciamos el segundo número
+        operacion = null // Reiniciamos la operación
     }
 
     /**
@@ -23,10 +29,10 @@ open class Clean(screen: TextView) : Calculator(screen) {
      */
 
     fun deleteUlitmoDigito() {
-        screen.text = if (screen.text.length > 1) {
-            screen.text.dropLast(1)
-        } else {
-            "0"
+        screen.text = if (screen.text.length > 1) { // Si la pantalla tiene más de un dígito
+            screen.text.dropLast(1) // Eliminamos el último dígito
+        } else { // Si la pantalla tiene un dígito
+            "0" // Mostramos 0
         }
     }
 }

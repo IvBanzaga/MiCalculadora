@@ -1,5 +1,13 @@
+/**
+ * Paquete de la aplicación
+ * @see https://kotlinlang.org/docs/reference/packages.html
+ */
 package com.vanzaga.micalculadora
 
+/**
+ * Importamos las clases necesarias
+ * @see https://kotlinlang.org/docs/reference/packages.html
+ */
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -36,6 +44,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val handler = Handler(Looper.getMainLooper())
     private val runnable = object : Runnable {
         override fun run() {
+            /**
+             * Mostrar la hora actual del sistema
+             */
             val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
             txtViewTime.text = currentTime
             handler.postDelayed(this, 1000)
@@ -134,7 +145,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      */
 
     override fun onClick(view: View?) {
-        when (view?.id) {
+        when (view?.id) { // Obtenemos el ID de la vista
             R.id.bt0 -> calcular.numeroPresionado("0")
             R.id.bt1 -> calcular.numeroPresionado("1")
             R.id.bt2 -> calcular.numeroPresionado("2")
@@ -151,13 +162,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btEqual -> calcular.calcularResultado()
             R.id.btAc -> limpiar.deleteUlitmoDigito()
             R.id.btRaiz -> calcular.calcularRaiz()
-            R.id.btMc -> calcular.memoryClear()
-            R.id.btMr -> calcular.memoryRecall()
-            R.id.btPlusNew -> calcular.memoryAdd()
-            R.id.btMinusNew -> calcular.memorySubtract()
-            R.id.btMs -> calcular.memorySave()
+            R.id.btMc -> calcular.limpiarMemoria()
+            R.id.btMr -> calcular.mostrarMemoria()
+            R.id.btPlusNew -> calcular.sumarMemoria()
+            R.id.btMinusNew -> calcular.restarMemoria()
+            R.id.btMs -> calcular.almacenarNumero()
         }
     }
+
+    /**
+     * Función onDestroy
+     * Detenemos el handler cuando la actividad se destruye
+     */
 
     override fun onDestroy() {
         super.onDestroy()

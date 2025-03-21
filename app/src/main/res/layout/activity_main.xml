@@ -24,7 +24,7 @@
         app:title="@string/app_name" />-->
 
 
-    <!-- Lineas guia -->
+    <!-- Lineas guia Horizontales -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gHor1"
         android:layout_width="0dp"
@@ -106,6 +106,7 @@
         app:layout_constraintGuide_percent="0.1"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Lineas guia Verticales -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gVer1"
         android:layout_width="0dp"
@@ -424,7 +425,7 @@
         app:layout_constraintStart_toEndOf="@+id/gVer1"
         app:layout_constraintTop_toBottomOf="@+id/gHor3" />
 
-    <!-- Separadores bordes para delimitar botones para la lógica -->
+    <!-- Separadores bordes de los botones -->
     <View
         android:id="@+id/separator"
         style="@style/Separator"
@@ -531,6 +532,7 @@
         app:layout_constraintTop_toTopOf="@+id/gHor4" />
 
     <!-- Pantalla de la calculadora -->
+
     <TextView
         android:id="@+id/screen"
         style="@style/ScreenNumber"
@@ -549,8 +551,6 @@
 
     <!-- Hora del sistema -->
 
-    <!-- Footer -->
-
     <TextView
         android:textColor="@android:color/white"
         android:layout_gravity="center"
@@ -565,6 +565,8 @@
         app:layout_constraintStart_toStartOf="@+id/gHor0"
         app:layout_constraintTop_toTopOf="@+id/gHor2"
         app:layout_constraintVertical_bias="0.0" />
+
+    <!-- Footer -->
 
     <LinearLayout
         android:id="@+id/footer"
